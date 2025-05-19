@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "minecraft-heads-browser",
+	"version": "${version}",
+	"name": "Minecraft Heads Browser",
+	"description": "In game browser for minecraft-heads.com heads",
+	"authors": [
+		"sophiethefox"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/project/QkGojrxC",
+		"sources": "https://github.com/sophiethefox/minecraft-heads-browser"
+	},
+	"license": "GNU GPLv3",
+	"icon": "assets/minecraft-heads-browser/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"cc.sophiethefox.minecraftheadsbrowser.MinecraftHeadsBrowser"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*",
+		"owo-lib": ">=0.12.21"
+	}
+}

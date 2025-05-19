@@ -1,0 +1,17 @@
+{
+  "text.config.minecraft-heads.option.saveCategories": [
+    "Save Categories"
+  ],
+  "text.config.minecraft-heads.option.savePage": [
+    "Save Page"
+  ],
+  "text.config.minecraft-heads.option.saveSearch": [
+    "Save Search"
+  ],
+  "text.config.minecraft-heads.option.saveNBTEdit": [
+    "Save NBT Modification"
+  ],
+  "key.minecraft-heads.opengui": [
+    "MC-Heads GUI"
+  ]
+}
