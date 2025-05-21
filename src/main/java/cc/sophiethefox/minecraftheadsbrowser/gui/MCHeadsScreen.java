@@ -221,7 +221,12 @@ public class MCHeadsScreen extends BaseOwoScreen<FlowLayout> implements CommandO
                             }
 
                             // Update the held item (creative only syncs this to server)
-                            int selectedSlot = player.getInventory().getSelectedSlot();
+                            int selectedSlot = player.getInventory()
+                                    //#if MC<12105
+                                    //$$ .selectedSlot;
+                                    //#else
+                                    .getSelectedSlot();
+                                    //#endif
                             player.getInventory().setStack(selectedSlot, newStack);
 
                             // sync to server
@@ -244,8 +249,12 @@ public class MCHeadsScreen extends BaseOwoScreen<FlowLayout> implements CommandO
                     String texture = skullData.value;
                     String headName = skullData.name;
 
-                    String giveCommand = "/give @s minecraft:player_head[minecraft:custom_name={\"text\":\"%s\",\"color\":\"gold\",\"underlined\":true,\"bold\":true,\"italic\":false},minecraft:lore=[{\"text\":\"www.minecraft-heads.com\",\"color\":\"blue\",\"italic\":false}],profile={id:%s,properties:[{name:\"textures\",value:\"%s\"}]}] 1".formatted(headName, id, texture);
-
+                    String giveCommand =
+                            //#if MC<12105
+                            //$$ "/give @s minecraft:player_head[minecraft:custom_name='{\"text\":\"%s\",\"color\":\"gold\",\"underlined\":true,\"bold\":true,\"italic\":false}',minecraft:lore=['{\"text\":\"www.minecraft-heads.com\",\"color\":\"blue\",\"italic\":false}'],profile={id:%s,properties:[{name:\"textures\",value:\"%s\"}]}] 1".formatted(headName, id, texture);
+                            //#else
+                            "/give @s minecraft:player_head[minecraft:custom_name={\"text\":\"%s\",\"color\":\"gold\",\"underlined\":true,\"bold\":true,\"italic\":false},minecraft:lore=[{\"text\":\"www.minecraft-heads.com\",\"color\":\"blue\",\"italic\":false}],profile={id:%s,properties:[{name:\"textures\",value:\"%s\"}]}] 1".formatted(headName, id, texture);
+                            //#endif
                     MinecraftClient.getInstance().player.networkHandler.sendChatCommand(giveCommand.substring(1));
                 }
                 return true;

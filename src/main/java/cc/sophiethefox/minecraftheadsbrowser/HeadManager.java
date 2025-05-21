@@ -12,6 +12,7 @@ import net.minecraft.text.Text;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +62,7 @@ public class HeadManager {
         Gson gson = new Gson();
         for (String cat : categories) {
             try {
-                URL url = new URL("https://minecraft-heads.com/scripts/api.php?cat=" + cat);
+                URL url = URI.create("https://minecraft-heads.com/scripts/api.php?cat=" + cat).toURL();
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestProperty("User-Agent", "Mozilla/5.0");
                 conn.setRequestMethod("GET");
